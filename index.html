@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>UNO da Fé | Site Oficial — O Jogo Bíblico que Tira as Crianças das Telas</title>
+<meta name="description" content="UNO da Fé: o jogo de cartas cristão em PDF para imprimir e jogar em família. Mesmas regras do UNO, com virtudes e versículos em cada carta. Acesso imediato por e-mail.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F9FA;
+    --card:#FFFFFF;
+    --text:#1F2933;
+    --muted:#5C6773;
+    --terracota:#C1452E;
+    --terracota-dark:#9B3520;
+    --green:#1E9E5A;
+    --green-dark:#167A46;
+    --blue:#4C63D2;
+    --gold:#D4A017;
+    --radius:16px;
+    --shadow:0 4px 20px rgba(0,0,0,0.05);
+    --shadow-lg:0 10px 40px rgba(0,0,0,0.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;}
+  .container{max-width:720px;margin:0 auto;padding:0 20px;}
+  .wide{max-width:960px;}
+
+  header.brand{padding:28px 20px 10px;text-align:center;}
+  header.brand .logo{font-weight:900;font-size:20px;letter-spacing:.5px;}
+  header.brand .logo .accent{color:var(--terracota);}
+
+  section{padding:32px 0;}
+  h2.section-title{font-size:24px;font-weight:800;text-align:center;line-height:1.3;margin-bottom:8px;}
+  p.section-sub{text-align:center;color:var(--muted);font-size:15px;margin-bottom:26px;}
+
+  .hero{padding:30px 0 24px;text-align:center;}
+  .hero h1{font-size:27px;font-weight:900;line-height:1.28;letter-spacing:-.5px;}
+  .hero h1 .hl{color:var(--terracota);}
+  .hero p.subtitle{margin-top:16px;font-size:16px;color:var(--muted);font-weight:500;}
+  .hero p.subtitle strong{color:var(--green-dark);}
+  .hero-img{margin:24px auto 0;border-radius:var(--radius);box-shadow:var(--shadow-lg);overflow:hidden;}
+
+  .anchor{
+    background:var(--card);border-radius:20px;box-shadow:var(--shadow-lg);
+    padding:30px 22px;text-align:center;border:1px solid rgba(193,69,46,0.12);
+  }
+  .anchor .for{font-size:14px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:700;}
+  .anchor .price{font-size:48px;font-weight:900;color:var(--terracota);margin-top:4px;line-height:1.1;}
+  .anchor .warranty{font-size:14px;font-weight:700;color:var(--green-dark);margin-top:10px;}
+
+  .cta-btn{
+    display:block;width:100%;background:var(--terracota);color:#fff;
+    font-size:18px;font-weight:800;text-align:center;padding:19px 20px;
+    border-radius:14px;border:none;cursor:pointer;margin-top:22px;
+    text-decoration:none;text-transform:uppercase;letter-spacing:.3px;
+    box-shadow:0 6px 0 var(--terracota-dark),0 10px 22px rgba(193,69,46,0.35);
+    transform:translateY(0);
+    transition:transform .1s ease,box-shadow .1s ease,background .15s ease;
+    animation:pulse 2s infinite;
+  }
+  .cta-btn:hover{background:var(--terracota-dark);}
+  .cta-btn:active{
+    transform:translateY(4px);
+    box-shadow:0 2px 0 var(--terracota-dark),0 4px 10px rgba(193,69,46,0.3);
+    animation:none;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 6px 0 var(--terracota-dark),0 10px 22px rgba(193,69,46,0.35);}
+    50%{box-shadow:0 6px 0 var(--terracota-dark),0 10px 30px rgba(193,69,46,0.6);}
+    100%{box-shadow:0 6px 0 var(--terracota-dark),0 10px 22px rgba(193,69,46,0.35);}
+  }
+  .cta-sub{margin-top:12px;font-size:12.5px;color:var(--muted);}
+  .cta-sub svg{vertical-align:-2px;margin-right:4px;}
+
+  .desc p{font-size:15px;color:var(--muted);text-align:center;max-width:600px;margin:0 auto;}
+  .desc strong{color:var(--text);}
+
+  .steps{display:flex;flex-direction:column;gap:20px;margin-top:26px;}
+  .step{
+    background:var(--card);border:2px solid var(--blue);border-radius:20px;
+    padding:32px 24px;display:flex;flex-direction:column;align-items:center;
+    text-align:center;gap:14px;
+  }
+  .step .icon{width:64px;height:64px;display:flex;align-items:center;justify-content:center;}
+  .step h3{font-size:20px;font-weight:800;color:var(--blue);letter-spacing:.3px;}
+  .step p{font-size:14.5px;color:var(--muted);max-width:260px;}
+
+  .gallery-scroll{
+    overflow:hidden;padding:6px 0 14px;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 82%,transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 82%,transparent 100%);
+  }
+  .gallery-track{display:flex;gap:14px;width:max-content;animation:gallery-scroll 22s linear infinite;}
+  .gallery-scroll:hover .gallery-track{animation-play-state:paused;}
+  @keyframes gallery-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .gallery-item{
+    flex:0 0 200px;aspect-ratio:1/1;
+    background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;
+  }
+  .gallery-item img{width:100%;height:100%;object-fit:cover;}
+
+  .bonus-card{
+    position:relative;overflow:hidden;
+    background:var(--card);border-radius:18px;box-shadow:var(--shadow-lg);
+    border:1px solid rgba(31,41,51,0.06);
+    padding:18px 18px 20px 21px;display:flex;flex-direction:column;gap:16px;margin-bottom:16px;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .bonus-card::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:linear-gradient(180deg,var(--terracota),var(--gold));
+  }
+  .bonus-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,0.1);}
+  .bonus-card .bimg{
+    width:100%;height:190px;border-radius:14px;overflow:hidden;
+    background:linear-gradient(160deg,#FDECE3,#F8F9FA);
+    border:1px solid rgba(31,41,51,0.06);
+    display:flex;align-items:center;justify-content:center;padding:14px;
+  }
+  .bonus-card .bimg img{width:100%;height:100%;object-fit:contain;border-radius:8px;}
+  .bonus-card .bimg.bimg-photo{background:none;border:none;padding:0;}
+  .bonus-card .bimg.bimg-photo img{object-fit:cover;border-radius:14px;}
+  .bonus-card .btxt{min-width:0;}
+  .bonus-card .btxt .num{
+    display:inline-block;background:#FDECE3;color:var(--terracota-dark);
+    font-size:10.5px;font-weight:800;letter-spacing:.3px;padding:3px 10px;border-radius:100px;margin-bottom:7px;
+  }
+  .bonus-card .btxt h3{font-size:16.5px;font-weight:800;margin-bottom:4px;line-height:1.25;}
+  .bonus-card .btxt p{font-size:13.5px;color:var(--muted);line-height:1.45;}
+  .bonus-card .btxt p strong{color:var(--text);}
+
+  .bonus-card.bonus-free::before{background:linear-gradient(180deg,var(--green),var(--green-dark));}
+  .bonus-card .num-free{background:#E3F6EC;color:var(--green-dark);}
+
+  .checklist{display:flex;flex-direction:column;gap:12px;}
+  .check-item{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;display:flex;gap:12px;align-items:center;}
+  .check-item svg{flex-shrink:0;}
+  .check-item span{font-size:15px;font-weight:500;}
+  .check-item small{display:block;color:var(--muted);font-weight:400;font-size:13px;margin-top:2px;}
+
+  .print-guide{display:flex;flex-direction:column;gap:14px;margin-top:26px;}
+  .print-step{
+    background:var(--card);border-radius:16px;box-shadow:var(--shadow);
+    padding:18px 20px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .print-step .pnum{
+    flex:0 0 34px;width:34px;height:34px;border-radius:50%;
+    background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:14.5px;
+  }
+  .print-step h3{font-size:16px;font-weight:800;margin-bottom:3px;}
+  .print-step p{font-size:13.5px;color:var(--muted);line-height:1.5;}
+
+  .proof-grid{display:flex;flex-direction:column;gap:16px;margin-top:26px;}
+  .proof-card{
+    background:var(--card);border-radius:16px;box-shadow:var(--shadow);
+    padding:14px;
+  }
+  .proof-slot{
+    aspect-ratio:4/5;border-radius:12px;overflow:hidden;
+    border:2px dashed rgba(31,41,51,0.15);background:#FAFAFA;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    color:var(--muted);text-align:center;padding:20px;
+  }
+  .proof-slot img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+  .proof-slot .plabel{font-size:13px;font-weight:700;}
+  .proof-slot .ptag{
+    display:inline-block;font-size:11px;font-weight:800;letter-spacing:.3px;
+    background:#EEF0F3;color:var(--muted);padding:3px 10px;border-radius:100px;
+  }
+  .proof-card .pname{font-size:12.5px;color:var(--muted);text-align:center;margin-top:10px;font-weight:600;}
+  @media(min-width:640px){
+    .proof-grid{flex-direction:row;flex-wrap:wrap;}
+    .proof-card{flex:1 1 220px;}
+    .print-guide{flex-direction:row;flex-wrap:wrap;}
+    .print-step{flex:1 1 260px;}
+  }
+
+  .offer{
+    background:linear-gradient(180deg,#FFFFFF, #FFF8F4);border-radius:22px;
+    box-shadow:var(--shadow-lg);padding:34px 22px;text-align:center;
+    border:1px solid rgba(193,69,46,0.15);
+  }
+  .offer .badge{display:inline-block;background:var(--green);color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:100px;margin-bottom:16px;}
+  .offer .plan-title{font-size:20px;font-weight:800;margin-bottom:4px;}
+  .offer .plan-sub{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.4px;}
+  .offer .plan-list{
+    text-align:left;max-width:440px;margin:0 auto 24px;list-style:none;
+    background:#fff;border-radius:14px;border:1px solid rgba(31,41,51,0.08);
+    box-shadow:0 2px 10px rgba(31,41,51,0.04);overflow:hidden;
+  }
+  .offer .plan-list li{
+    display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;
+    font-size:14.5px;line-height:1.4;padding:13px 16px;
+    border-bottom:1px solid rgba(31,41,51,0.07);
+  }
+  .offer .plan-list li:last-child{border-bottom:none;}
+  .offer .plan-list li svg{margin-top:1px;}
+  .offer .plan-list li img{flex-shrink:0;width:28px;height:28px;object-fit:contain;margin-top:-2px;}
+  .offer .price-label{font-size:14px;color:var(--muted);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+  .offer .price{font-size:56px;font-weight:900;color:var(--terracota);line-height:1.1;margin-top:4px;}
+  .offer .price sup{font-size:26px;top:-22px;}
+  .offer .installment{font-size:13px;color:var(--muted);margin-top:6px;}
+
+  .summary{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 22px;}
+  .summary h3{font-size:17px;font-weight:800;margin-bottom:10px;text-align:center;}
+  .summary p{font-size:14.5px;color:var(--muted);margin-bottom:10px;}
+  .summary p:last-child{margin-bottom:0;}
+  .summary em{color:var(--text);font-style:normal;font-weight:600;}
+
+  .faq-item{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:20px 22px;margin-bottom:12px;}
+  .faq-item h3{font-size:16px;font-weight:800;margin-bottom:8px;}
+  .faq-item p{font-size:14px;color:var(--muted);}
+
+  .guarantee{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 22px;text-align:center;}
+  .guarantee .seal{width:96px;height:96px;margin:0 auto 14px;}
+  .guarantee .seal img{width:100%;height:100%;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.18));}
+  .guarantee h3{font-size:19px;font-weight:800;margin-bottom:8px;}
+  .guarantee p{font-size:14.5px;color:var(--muted);}
+
+  .sticky-cta{
+    position:fixed;bottom:0;left:0;right:0;background:#fff;
+    box-shadow:0 -8px 24px rgba(0,0,0,0.12);padding:10px 16px;z-index:50;
+  }
+  .sticky-cta .cta-btn{margin-top:0;padding:15px 20px;font-size:16px;}
+  body{padding-bottom:74px;}
+
+  footer{text-align:center;padding:32px 20px 100px;font-size:12px;color:#9AA5B1;line-height:1.7;}
+  footer a{color:#9AA5B1;}
+
+  @media(min-width:640px){
+    .hero h1{font-size:36px;}
+    .steps{flex-direction:row;}
+    .step{flex:1;}
+    .offer .price{font-size:64px;}
+    .anchor .price{font-size:60px;}
+    body{padding-bottom:0;}
+    .sticky-cta{display:none;}
+    .bonus-card{flex-direction:row;align-items:center;padding:18px 18px 18px 21px;}
+    .bonus-card .bimg{width:120px;height:120px;flex:0 0 120px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="brand">
+  <div class="logo">UNO DA <span class="accent">FÉ</span> ✝</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>A forma mais fácil de tirar seus filhos da tela e aproximar sua família da <span class="hl">Bíblia</span> — no jogo que eles já pedem pra jogar</h1>
+    <p class="subtitle">Baralho pronto pra imprimir em casa, com as <strong>mesmas regras do UNO</strong> que sua família já sabe jogar — só que cada carta traz uma virtude, e cartas especiais trazem versículos pra ler em voz alta.</p>
+    <div class="hero-img">
+      <img src="assets/hero-lifestyle.jpg" alt="Família jogando UNO da Fé à mesa, com a caixa do jogo e a Bíblia ao lado">
+    </div>
+  </div>
+</section>
+
+<!-- PREÇO -->
+<section class="anchor-section">
+  <div class="container">
+    <div class="anchor">
+      <div class="for">PAGAMENTO ÚNICO</div>
+      <div class="price">R$19,90</div>
+      <div class="warranty">✓ GARANTIA DE 7 DIAS</div>
+      <a href="#planos" class="cta-btn">QUERO JOGAR HOJE</a>
+    </div>
+  </div>
+</section>
+
+<!-- DESCRIÇÃO + COMO FUNCIONA -->
+<section class="desc-section">
+  <div class="container">
+    <div class="desc">
+      <p>O <strong>UNO da Fé</strong> é pra quem quer transformar o tempo em família em um momento de conexão de verdade e aprendizado espiritual. Mesma diversão viciante do UNO que todo mundo já conhece — agora carregando personagens, virtudes e versículos em cada rodada.<br><br>Cada carta numerada traz uma <strong>virtude</strong> (Fé, Esperança, Amor, Coragem, Gratidão, Paz, Sabedoria), as cartas de ação vêm com uma mensagem devocional curta, e as cartas de versículo são lidas em voz alta na hora em que caem no jogo.</p>
+    </div>
+
+    <h2 class="section-title" style="margin-top:36px;">Como funciona o acesso ao <span style="color:var(--terracota)">KIT</span></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="icon">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="15" height="11" rx="2" stroke="#4C63D2" stroke-width="1.8"/><path d="M2 8l7.5 5L17 8" stroke="#4C63D2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="13" y="13" width="9" height="6" rx="1.5" fill="#4C63D2"/><path d="M15.5 15.3h4M15.5 17h2.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>CHEGA NO E-MAIL</h3>
+        <p>O jogo é 100% em PDF. Após aprovar o pagamento, você recebe o acesso no seu e-mail.</p>
+      </div>
+      <div class="step">
+        <div class="icon">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="10" height="7" rx="1.5" fill="#4C63D2"/><rect x="2" y="9" width="14" height="8" rx="2" stroke="#4C63D2" stroke-width="1.8"/><circle cx="14.5" cy="12" r="1" fill="#4C63D2"/><rect x="5" y="14" width="8" height="6" rx="1" stroke="#4C63D2" stroke-width="1.6"/></svg>
+        </div>
+        <h3>PODE IMPRIMIR</h3>
+        <p>Você pode imprimir e utilizar quantas vezes quiser, com toda a família.</p>
+      </div>
+      <div class="step">
+        <div class="icon">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="3" fill="#4C63D2"/><path d="M6 21c0-3.5 2.7-6 6-6s6 2.5 6 6" stroke="#4C63D2" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>HORA DA DIVERSÃO</h3>
+        <p>E por fim, chegou a hora de reunir a família e começar a jogar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ IRÁ RECEBER (galeria real) -->
+<section class="receive-section">
+  <div class="container wide">
+    <h2 class="section-title">VEJA COMO FICAM AS CARTAS</h2>
+    <div class="gallery-scroll">
+      <div class="gallery-track">
+        <div class="gallery-item"><img src="assets/card-fe.jpg" alt="Carta Fé, número 1"></div>
+        <div class="gallery-item"><img src="assets/card-esperanca.jpg" alt="Carta Esperança, número 2"></div>
+        <div class="gallery-item"><img src="assets/card-paz.jpg" alt="Carta Paz, número 4"></div>
+        <div class="gallery-item"><img src="assets/card-plus2.jpg" alt="Carta de ação Comprar +2 com mensagem devocional"></div>
+        <div class="gallery-item"><img src="assets/card-versiculo.jpg" alt="Carta de versículo bíblico lida em voz alta"></div>
+        <div class="gallery-item"><img src="assets/cards-cores.jpg" alt="Cartas nas quatro cores do baralho"></div>
+        <div class="gallery-item" aria-hidden="true"><img src="assets/card-fe.jpg" alt=""></div>
+        <div class="gallery-item" aria-hidden="true"><img src="assets/card-esperanca.jpg" alt=""></div>
+        <div class="gallery-item" aria-hidden="true"><img src="assets/card-paz.jpg" alt=""></div>
+        <div class="gallery-item" aria-hidden="true"><img src="assets/card-plus2.jpg" alt=""></div>
+        <div class="gallery-item" aria-hidden="true"><img src="assets/card-versiculo.jpg" alt=""></div>
+        <div class="gallery-item" aria-hidden="true"><img src="assets/cards-cores.jpg" alt=""></div>
+      </div>
+    </div>
+    <a href="#planos" class="cta-btn">QUERO O MEU</a>
+  </div>
+</section>
+
+<!-- BÔNUS GRÁTIS + BAÚ DE JOGOS (order bump real, não bônus fabricado) -->
+<section class="bonus-section">
+  <div class="container">
+    <h2 class="section-title">E ISSO É SÓ O COMEÇO</h2>
+    <p class="section-sub">Já vai junto um bônus grátis com o seu UNO da Fé</p>
+
+    <div class="bonus-card bonus-free">
+      <div class="bimg bimg-photo"><img src="assets/thumb-devocional-bonus.jpg" alt="Minha Jornada com Deus — Devocional Bíblico de 30 Dias para Crianças, bônus grátis"></div>
+      <div class="btxt">
+        <span class="num num-free">BÔNUS GRÁTIS</span>
+        <h3>Devocional Bíblico de 30 Dias</h3>
+        <p>"Minha Jornada com Deus": uma história, um versículo, uma oração e uma atividade por dia — pra fazer em família, sem custo extra.</p>
+      </div>
+    </div>
+
+    <p class="section-sub" style="margin-top:30px;">E tem mais: na hora de finalizar o pedido (a etapa de pagamento, o tal do "checkout"), você também vai ver a opção de levar o Baú de Jogos da Fé</p>
+
+    <div class="bonus-card">
+      <div class="bimg bimg-photo"><img src="assets/real-quiz.jpg" alt="Turma de escola dominical jogando o Quiz Bíblico"></div>
+      <div class="btxt">
+        <span class="num">NO BAÚ</span>
+        <h3>Quiz Bíblico</h3>
+        <p><strong>Já é sucesso em escolas dominicais.</strong> Um dos 18 jogos bíblicos extras disponíveis nessa oferta especial de pagamento.</p>
+      </div>
+    </div>
+    <div class="bonus-card">
+      <div class="bimg bimg-photo"><img src="assets/real-trunfo.jpg" alt="Família jogando o Trunfo Bíblico à mesa"></div>
+      <div class="btxt">
+        <span class="num">NO BAÚ</span>
+        <h3>Jogo da Memória Bíblico</h3>
+        <p><strong>A criançada aprova.</strong> Outro exemplo do conteúdo do Baú — 18 jogos + 5 bônus ao todo.</p>
+      </div>
+    </div>
+    <div class="bonus-card">
+      <div class="bimg bimg-photo"><img src="assets/real-memoria.jpg" alt="Crianças jogando o Trunfo Bíblico"></div>
+      <div class="btxt">
+        <span class="num">NO BAÚ</span>
+        <h3>Trunfo Bíblico</h3>
+        <p><strong>Pais e filhos jogando juntos.</strong> Não é obrigatório levar, mas a maioria das famílias aproveita a oferta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST DE VALOR (conteúdo real do produto) -->
+<section class="value-section">
+  <div class="container">
+    <h2 class="section-title">Tudo o que vem no seu PDF</h2>
+    <p class="section-sub">Pronto para imprimir. Sem mensalidade. Sem complicação.</p>
+    <div class="checklist">
+      <div class="check-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1E9E5A"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Baralho completo <small>Arte exclusiva dos personagens bíblicos, mesmas regras do UNO tradicional</small></span>
+      </div>
+      <div class="check-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1E9E5A"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Cartas de virtude, ação e versículo <small>Mensagem devocional curta em cada carta especial</small></span>
+      </div>
+      <div class="check-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1E9E5A"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Manual de regras ilustrado <small>Passo a passo, fácil de entender pra toda a família</small></span>
+      </div>
+      <div class="check-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1E9E5A"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Arquivo em alta resolução <small>Pronto pra imprimir em casa, sem depender de gráfica</small></span>
+      </div>
+      <div class="check-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1E9E5A"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Licença de impressão ilimitada <small>Imprima quantas vezes quiser, pra família ou pra turma toda</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO IMPRIMIR (passo a passo) -->
+<section class="print-section">
+  <div class="container">
+    <h2 class="section-title">Como imprimir o seu UNO da Fé</h2>
+    <p class="section-sub">Simples, rápido e sem mistério — siga o passo a passo</p>
+    <div class="print-guide">
+      <div class="print-step">
+        <div class="pnum">1</div>
+        <div>
+          <h3>Papel certo pra durar</h3>
+          <p>O ideal é papel cartão ou fotográfico entre 180g e 230g, pra ficar com uma textura mais parecida com baralho de verdade. Papel sulfite comum (A4, 75g-90g) também funciona, só fica mais fininho.</p>
+        </div>
+      </div>
+      <div class="print-step">
+        <div class="pnum">2</div>
+        <div>
+          <h3>Configuração da impressão</h3>
+          <p>Na hora de imprimir, escolha "tamanho real" ou "ajustar à página", ative a impressão colorida e a qualidade alta, pra as cores das cartas saírem bem vivas.</p>
+        </div>
+      </div>
+      <div class="print-step">
+        <div class="pnum">3</div>
+        <div>
+          <h3>Corte certinho</h3>
+          <p>Use tesoura ou estilete com régua, seguindo as linhas de corte de cada carta. Capriche nos cantos pra ficar com o tamanho parecido de um baralho comum.</p>
+        </div>
+      </div>
+      <div class="print-step">
+        <div class="pnum">4</div>
+        <div>
+          <h3>Plastifique (opcional)</h3>
+          <p>Quer que dure ainda mais? Depois de cortar, você pode plastificar as cartas em casa (plástico adesivo) ou numa gráfica/papelaria perto de você.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL (aguardando prints reais) -->
+<section class="social-proof-section">
+  <div class="container">
+    <h2 class="section-title">Quem já está jogando</h2>
+    <p class="section-sub">Mães, professoras e famílias reais compartilhando a experiência</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-slot">
+          <span class="ptag">MÃE</span>
+          <span class="plabel">Print 1 de 4</span>
+        </div>
+        <p class="pname">Aguardando envio</p>
+      </div>
+      <div class="proof-card">
+        <div class="proof-slot">
+          <span class="ptag">PROFESSORA</span>
+          <span class="plabel">Print 2 de 4</span>
+        </div>
+        <p class="pname">Aguardando envio</p>
+      </div>
+      <div class="proof-card">
+        <div class="proof-slot">
+          <span class="ptag">MÃE</span>
+          <span class="plabel">Print 3 de 4</span>
+        </div>
+        <p class="pname">Aguardando envio</p>
+      </div>
+      <div class="proof-card">
+        <div class="proof-slot">
+          <span class="ptag">FAMÍLIA</span>
+          <span class="plabel">Print 4 de 4</span>
+        </div>
+        <p class="pname">Aguardando envio</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO / OFERTA -->
+<section class="pricing" id="planos">
+  <div class="container">
+    <div class="offer">
+      <span class="badge">PREÇO DE LANÇAMENTO</span>
+      <div class="plan-title">UNO DA FÉ — BARALHO COMPLETO</div>
+      <div class="plan-sub">Tudo o que você recebe hoje</div>
+
+      <ul class="plan-list">
+        <li><img src="assets/icon-baralho.png" alt="" width="28" height="28"> Baralho completo com arte exclusiva dos personagens bíblicos</li>
+        <li><img src="assets/icon-cartas.png" alt="" width="28" height="28"> Cartas de virtude, ação com mensagem devocional e versículo</li>
+        <li><img src="assets/icon-manual.png" alt="" width="28" height="28"> Manual de regras ilustrado</li>
+        <li><img src="assets/icon-impressao.png" alt="" width="28" height="28"> Licença de impressão ilimitada</li>
+        <li><img src="assets/icon-garantia.png" alt="" width="28" height="28"> 7 dias de garantia incondicional</li>
+        <li><img src="assets/icon-bonus.png" alt="" width="28" height="28"> <span><strong>Bônus grátis:</strong> Devocional bíblico de 30 dias pra família</span></li>
+      </ul>
+
+      <div class="price-label">Hoje, pagamento único de</div>
+      <div class="price"><sup>R$</sup>19,90</div>
+
+      <a href="#" class="cta-btn">QUERO MEU UNO DA FÉ AGORA</a>
+      <div class="cta-sub">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="display:inline-block"><path d="M12 22c4.97-1.5 8-5.5 8-11V5l-8-3-8 3v6c0 5.5 3.03 9.5 8 11z" stroke="#5C6773" stroke-width="1.6"/></svg>
+        Compra 100% segura · Acesso imediato por e-mail
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<section class="summary-section">
+  <div class="container">
+    <div class="summary">
+      <h3>Não leu tudo? Vamos resumir para você...</h3>
+      <p>O <em>UNO da Fé</em> tem as mesmas regras do UNO que sua família já conhece, com virtudes bíblicas e versículos em cada carta especial. Pronto pra imprimir em casa, a partir dos 7 anos.</p>
+      <p>Pagamento único de R$19,90, acesso imediato por e-mail, e 7 dias de garantia — sem risco pra você.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <div class="faq-item">
+      <h3>Em quanto tempo eu irei receber meu acesso?</h3>
+      <p>Logo após a aprovação do seu pagamento, você recebe no seu e-mail de compra o link de download do PDF.</p>
+    </div>
+    <div class="faq-item">
+      <h3>O pagamento é único? E se eu não gostar?</h3>
+      <p>Sim, é pagamento único, sem mensalidade. E se você não gostar, tem reembolso garantido em até 7 dias, sem perguntas.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Preciso de impressora colorida?</h3>
+      <p>Recomendamos impressão colorida pra manter a experiência completa, mas o jogo também funciona em preto e branco.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Funciona para crianças pequenas?</h3>
+      <p>A mecânica segue o padrão do UNO tradicional, recomendado a partir dos 7 anos. Crianças menores aproveitam melhor jogando em dupla com um adulto.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Posso imprimir mais de uma vez, pra vários filhos ou turmas?</h3>
+      <p>Sim, o arquivo é seu — pode imprimir quantas vezes quiser pra uso da sua própria família ou turma.</p>
+    </div>
+    <a href="#planos" class="cta-btn">COMPRAR AGORA</a>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="guarantee-section">
+  <div class="container">
+    <div class="guarantee">
+      <div class="seal">
+        <img src="assets/guarantee-seal.png" alt="Selo de garantia de satisfação total — 7 dias, 100% do dinheiro de volta">
+      </div>
+      <h3>Garantia incondicional de 7 dias</h3>
+      <p>Baixou, imprimiu, jogou com a família e não gostou? Devolvemos 100% do seu dinheiro, sem perguntas. O risco é todo nosso.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container wide">
+    <p>© 2026 UNO da Fé. Produto digital — sem envio físico.</p>
+    <p style="margin-top:8px;">Dúvidas: <a href="mailto:contato@unodafe.com.br">contato@unodafe.com.br</a> · Garantia de 7 dias conforme política de reembolso.</p>
+    <p style="margin-top:8px;">ISENÇÃO DE RESPONSABILIDADE: este site não faz parte do Facebook nem é endossado pelo Facebook, Inc.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="#planos" class="cta-btn">Quero o UNO da Fé — R$19,90</a>
+</div>
+
+</body>
+</html>
